@@ -1,5 +1,5 @@
 INCLUDES = -I.
-LIBS = -lm
+LIBS = -lm -lrt
 FLAGS = -std=c++11 -Wall -Wno-unused-function -O3 -o
 COMPILER = g++
 
