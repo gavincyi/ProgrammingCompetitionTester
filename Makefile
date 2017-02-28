@@ -1,6 +1,6 @@
 INCLUDES = -I.
 LIBS = -lm
-FLAGS = -std=c++1y -Wall -Wno-unused-function -O3 -o
+FLAGS = -std=c++11 -Wall -Wno-unused-function -O3 -o
 COMPILER = g++
 
 test: TestBinarian TestCountBits TestLatency
