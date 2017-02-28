@@ -18,7 +18,7 @@ using namespace std;
 class TestCountBits : public TestMachine<int, int> {
     public:
         TestCountBits() :
-            TestMachine(1, 14, 0, 14)
+            TestMachine("TestMachine", 1, 14, 0, 14)
         {}    
         
     protected:

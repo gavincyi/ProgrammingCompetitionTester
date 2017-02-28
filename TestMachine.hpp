@@ -32,12 +32,14 @@ class TestMachine {
         /**
          * Constructor
          * 
+         * :param name              Name
          * :param minSize           Minimum size of the array
          * :param maxSize           Maximum size of the array
          * :param minRange          Minimum range of each element
          * :param maxRange          Maximum range of each element
          */
-        TestMachine(long minSize, long maxSize, T minRange, T maxRange) :
+        TestMachine(string name, long minSize, long maxSize, T minRange, T maxRange) :
+            _name(name),
             _minSize(minSize), 
             _maxSize(maxSize), 
             _minRange(minRange), 
@@ -76,7 +78,7 @@ class TestMachine {
          * :param numTests          The number of tests
          */
         virtual void Run(int numTests=1000) {
-            cout << "Start running " << Name() << "..." << endl;
+            cout << "Start running " << _name << "..." << endl;
             vector<R> solutions(_numAlgorithms, 0);
             
             // Run the test cases first
@@ -105,7 +107,7 @@ class TestMachine {
                     clock_gettime(CLOCK_REALTIME, &runningStart);
                     solutions[index] = _allAlgorithms[index](randArray);
                     clock_gettime(CLOCK_REALTIME, &runningEnd);
-                    if (index > 0 && !IsEqual(solutions[index], solutions[0])) {
+                    if (index > 0 && !IsEqual(solutions[0], solutions[index])) {
                         cout << "Incorrect solution: " << ToStr(randArray) << endl
                              << "Index 0: " << solutions[0] << endl
                              << "Index " << index << ": " << solutions[index] << endl;
@@ -121,7 +123,7 @@ class TestMachine {
             
             // Print the summary
             PrintSummary();
-            cout << "Finished running " << Name() << "..." << endl;
+            cout << "Finished running " << _name << "..." << endl;
         }
     
     protected:
@@ -147,6 +149,8 @@ class TestMachine {
     
         /**
          * Check if the two return values are the same
+         * 
+         * Normally the first value is the static one.
          */
         virtual bool IsEqual(R& v1, R& v2) const {
             return v1 == v2;
@@ -154,6 +158,7 @@ class TestMachine {
         
     private:
     
+        string _name;
         long _minSize;
         long _maxSize;
         T _minRange;

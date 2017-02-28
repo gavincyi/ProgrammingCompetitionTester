@@ -4,21 +4,13 @@
 
 using namespace std;
 
-// Given an array A, where A[i] indicates the power of 2. The array is
-// an non-decreasing array and forms a sum of a binaries (K). The algorithm 
-// is to calculate the number of bits of 3 * K.
-// Example:
-// A[0] = 1
-// A[1] = 4
-// A[2] = 5
-// K = 110010
-// 3 * K = 10010110
-// The answer is 4 (4 bits set to 1).
+// Given an array A, where A[i] indicates the index of power 2.
+// Calculate the number of bits of the sum of A.
 
 class TestBinarian : public TestMachine<int, int> {
     public:
         TestBinarian() :
-            TestMachine(1, 1000, 0, 10)
+            TestMachine("TestBinarian", 1, 1000, 0, 10)
         {}    
 };
 
